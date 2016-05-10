@@ -1,18 +1,35 @@
-"Pathogen plugins--------------------------------------------------------------
+"Vundle plugins--------------------------------------------------------------
+
 
 " set the runtime path to include Vundle and initialize
-execute pathogen#infect()
-syntax on
+set nocompatible              " be iMproved, required AND screw vi
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Vim plugins
+Plugin 'VundleVim/vundle.vim'
+Plugin 'Valloric/YouComleteMe'
+Plugin 'scrooloose/nerdtree'
 
 "Color Schemes-----------------------------------------------------------------
-colorscheme Monokai
-colorscheme twilight256
+
+" Incase none of the theme plugins are installed
+try
+    colorscheme twilight256
+catch
+endtry
+
 syntax enable "enable syntax processing
+set background=dark
 
 "Indentation-------------------------------------------------------------------
+filetype plugin indent on
 set tabstop=4 "sets number of spaces per TAB character in visual mode
 set softtabstop=4 "sets number of spaces per tab when in insert mode
 set expandtab "sets tab into spaces, essentially makes it into 4 spaces
+set sw=4 "sets the >> command to one tap=4 spaces
 
 "UserInterface Configuration --------------------------------------------------
 set relativenumber "shows line number and other cool funky stuff
@@ -22,6 +39,7 @@ filetype indent on "loads specific indentaions settings for file types
 set wildmenu "visual autocomplete for commands
 set lazyredraw "increases performances by drawing screen only when needed
 set showmatch "highlight matching [{()}]
+
 
 "Folding-----------------------------------------------------------------------
 set foldenable "enables folding of lines from one to another
