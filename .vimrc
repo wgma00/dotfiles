@@ -14,10 +14,10 @@ Plugin 'Valloric/YouComleteMe'
 Plugin 'scrooloose/nerdtree'
 
 "Color Schemes-----------------------------------------------------------------
-
+syntax on
 " Incase none of the theme plugins are installed
 try
-    colorscheme twilight256
+    colorscheme monokai
 catch
 endtry
 
