@@ -23,12 +23,6 @@ setup_latex_env(){
 }
 
 
-setup_eclipse_env(){
-
-    wget https://www.eclipse.org/downloads/download.php?file=/oomph/epp/neon/R3/eclipse-inst-linux64.tar.gz&mirror_id=504
-
-}
-
 read -p "Setting up Development Environent. This is a length process, do you wish to continue? y/n `echo $'\n> '`" option
 if [[ "$option" == "y" ]]; then
 
