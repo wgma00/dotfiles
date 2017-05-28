@@ -22,6 +22,27 @@ setup_latex_env(){
     sudo apt-get install texstudio
 }
 
+setup_eclipse_env(){
+    # this may change depending on if the server is stil active when this script is running
+    # so if this doesn't work try updating the link yourself 
+    wget http://mirror.cc.vt.edu/pub/eclipse/oomph/epp/neon/R3/eclipse-inst-linux64.tar.gz -O  eclipse-inst-linux64.tar.gz 
+    if [[ -e eclipse-inst-linux64.tar.gz ]]; then
+        # install oracle
+        echo "Installing correct Java dependecies"
+        sudo add-apt-repository ppa:webupd8team/java
+        sudo apt-get update
+        sudo apt-get install oracle-java8-installer
+        sudo apt-get install oracle-java8-set-default
+        tar -xzvf eclipse-inst-linux64.tar.gz  
+        echo "Initiating GUI installer for Eclipse in SUDO mode, make sure to install in /opt as java-neon. Also don't forget to install in advanced setting and to remove the bundler install."
+        sudo ./eclipse-installer/eclipse-inst
+        cp eclipse.desktop ~/.local/share/applications/
+    else
+        echo "Problem downloading Eclipse tar from server, please update link in bash code"
+    fi
+}
+
+
 
 read -p "Setting up Development Environent. This is a length process, do you wish to continue? y/n `echo $'\n> '`" option
 if [[ "$option" == "y" ]]; then
