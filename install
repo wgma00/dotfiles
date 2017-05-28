@@ -7,7 +7,7 @@ setup_git_env(){
     git config --global user.name "William Granados"
 }
 
-install_vim(){
+setup_vim_env(){
     sudo apt-get install vim-gnome
     rm -rf ~/.vim
     rm -f ~/.vimrc
@@ -17,5 +17,36 @@ install_vim(){
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
-install_vim
-setup_git_env
+setup_latex_env(){
+    sudo apt-get install texlive-full
+    sudo apt-get install texstudio
+}
+
+read -p "Setting up Development Environent. This is a length process, do you wish to continue? y/n `echo $'\n> '`" option
+if [[ "$option" == "y" ]]; then
+
+
+    read -p "Step 1: Setting up Git environment, would you like to skip this step? y/n `echo $'\n> '`" option
+
+    if [[ "$option" == "n" ]]; then
+        setup_git_env
+    fi
+
+    read -p "Step 2: Setting up VIM environment, would you like to skip this step? y/n `echo $'\n> '`" option
+    if [[ "$option" == "n" ]]; then
+        setup_vim_env
+    fi
+
+    read -p "Step 3: Setting up LaTeX environment, would you like to skip this step? y/n `echo $'\n> '`" option
+    if [[ "$option" == "n" ]]; then
+        read -p "Would you like to install the full texlive LaTeX library (3gb) y/n? `echo $'\n> '`" option
+        if [[ "$option" == "y" ]]; then
+            setup_latex_env texlive-full
+        else
+            echo "Setting up basic install of texlive"
+            setup_latex_env texlive
+        fi
+    fi
+
+fi
+
