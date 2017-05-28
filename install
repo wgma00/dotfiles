@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+setup_git_env(){
+    sudo apt-get install git-core
+    git config --global user.email "me@wgma00.me"
+    git config --global user.name "William Granados"
+}
+
+install_vim(){
+    sudo apt-get install vim-gnome
+    rm -rf ~/.vim
+    rm -f ~/.vimrc
+	mv .vim ~ 
+	mv .vimrc ~ 
+	rm -rf ~/.vim/bundle/Vundle.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+}
+
+install_vim
+setup_git_env
