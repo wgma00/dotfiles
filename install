@@ -18,8 +18,15 @@ setup_vim_env(){
 }
 
 setup_latex_env(){
-    sudo apt-get install texlive-full
+    sudo apt-get install $1 
     sudo apt-get install texstudio
+}
+
+
+setup_eclipse_env(){
+
+    wget https://www.eclipse.org/downloads/download.php?file=/oomph/epp/neon/R3/eclipse-inst-linux64.tar.gz&mirror_id=504
+
 }
 
 read -p "Setting up Development Environent. This is a length process, do you wish to continue? y/n `echo $'\n> '`" option
@@ -46,6 +53,11 @@ if [[ "$option" == "y" ]]; then
             echo "Setting up basic install of texlive"
             setup_latex_env texlive
         fi
+    fi
+
+    read -p "Step 4: Setting up Eclipse environment, would you like to skip this step? y/n `echo $'\n> '`" option
+    if [[ "$option" == "n" ]]; then
+        setup_eclipse_env
     fi
 
 fi
