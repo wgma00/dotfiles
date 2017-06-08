@@ -5,6 +5,7 @@ setup_git_env(){
     sudo apt-get install git-core
     git config --global user.email "me@wgma00.me"
     git config --global user.name "William Granados"
+    git config --global core.editor "vim"
 }
 
 setup_vim_env(){
